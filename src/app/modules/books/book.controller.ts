@@ -10,7 +10,7 @@ export const getAllBooks = async(req : Request , res : Response) =>{
     })
 }
 
-// get all  genre books from db 
+// Task ---> 2 : get all  genre books from db 
 export const getGenreBooks = async (req: Request, res: Response) => {
     const {genre} = req.params ;
     const books = await getBooksFromDb(genre);
@@ -21,7 +21,7 @@ export const getGenreBooks = async (req: Request, res: Response) => {
 };
 
 
-//get specific specific genre “Sci-Fi” and published by “Roli Books”.
+//Task --> 3 : get  specific genre “Sci-Fi” and published by “Roli Books”.
 export const getPublisherAndGenreBooks = async (req: Request, res: Response) => {
     const books = await getGenrePublisherBooksFromDb();
     res.status(200).json({

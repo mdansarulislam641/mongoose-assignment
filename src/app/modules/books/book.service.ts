@@ -8,7 +8,7 @@ export const getAllBooksFromDb = async () :Promise<IBook[] | []>=>{
     return books ;
 }
 
-// get genre books Books from Db 
+// Task--> 2 : get genre books Books from Db 
 export const getBooksFromDb = async (payload : string): Promise<IBook[] | []> => {
     const genre = new RegExp(payload , 'i');
     const books = await Book.find({ genre});
@@ -16,7 +16,7 @@ export const getBooksFromDb = async (payload : string): Promise<IBook[] | []> =>
 };
 
 
-// get specific  genre “Sci-Fi” and published by “Roli Books”.
+// Task---> 3 :  get specific  genre “Sci-Fi” and published by “Roli Books”.
 export const getGenrePublisherBooksFromDb = async (): Promise<IBook[] | []> => {
     const books = await Book.find({genre : "Sci-Fi",  "publisher.name" : "Roli Books"});
     return books ;
