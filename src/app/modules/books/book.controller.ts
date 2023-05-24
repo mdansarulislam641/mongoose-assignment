@@ -1,9 +1,18 @@
-import express, { Request, Response } from 'express';
-import { createBookToDB, getBooksFromDb, getGenrePublisherBooksFromDb } from "./book.service";
+import { Request, Response } from 'express';
+import {  changePriceStringToIntegerToDB, getAllBooksFromDb, getBooksFromDb, getGenrePublisherBooksFromDb } from "./book.service";
 
-// get all books from db 
-export const getAllBooks = async (req: Request, res: Response) => {
-    const { genre } = req.params;
+//get all Book from DB
+export const getAllBooks = async(req : Request , res : Response) =>{
+    const books = await getAllBooksFromDb();
+    res.status(200).json({
+        status : "success",
+        data : books 
+    })
+}
+
+// get all  genre books from db 
+export const getGenreBooks = async (req: Request, res: Response) => {
+    const {genre} = req.params ;
     const books = await getBooksFromDb(genre);
     res.status(200).json({
         status: "success",
@@ -19,4 +28,13 @@ export const getPublisherAndGenreBooks = async (req: Request, res: Response) => 
         status: "success",
         data : books 
     })
+};
+
+// task  ---> 5  controller
+export const changePriceStringToInteger = async(req : Request , res : Response) =>{
+    const books = await changePriceStringToIntegerToDB();
+    res.status(200).json({
+        status : "success",
+        data : books
+    });
 }

@@ -1,9 +1,10 @@
 import express from 'express';
-import { getAllBooks, getPublisherAndGenreBooks } from './book.controller';
+import { changePriceStringToInteger, getAllBooks, getGenreBooks, getPublisherAndGenreBooks } from './book.controller';
 const router = express.Router();
-
+router.get('/', getAllBooks)
 router.get('/genre-publisher', getPublisherAndGenreBooks);
-router.get('/:genre', getAllBooks)
-// router.post('/create-book', getAllBooks);
+router.put('/update-price', changePriceStringToInteger);
+router.get('/:genre', getGenreBooks)
+
 
 export default router ;
